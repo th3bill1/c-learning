@@ -14,5 +14,14 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Set2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Set1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetChoosing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
