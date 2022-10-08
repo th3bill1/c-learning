@@ -140,6 +140,99 @@ void Set1(int chosenTask)
 		}
 		else printf("Wrong input.");
 		break;
+	case 11:
+		int n, k = 1, l = 0;
+		printf("Put the number: ");
+		if (scanf("%d", &n) == 1)
+		{
+			for (int i = 0; i <= n; i++)
+			{
+				if (k < n && k+i<n) k = k + i;
+				if (l < n && i<(log(n))/log(2)) l = (int)pow(2, i);
+				printf("%d  %d  %d  %d  %d  %lf\n", i, n - i, 2 * i + 1, k, l, pow(2, i));
+			}
+		}
+		break;
+	case 12:
+		for (int i = 1; i <= 100; i++)
+		{
+			
+			if ((i % 7 == 0)) printf("%d\n", i);
+			else if ((i % 2 == 0) && (i % 5 != 0)) printf("   %d\n", i);
+			else if (i % 5 == 0 || i % 7 == 0) printf("      %d\n", i);
+		}
+		break;
+	case 13:
+		int min = 20000000, max = 0, sum = 0, currNum, howMany = 0;
+		while (1)
+		{
+			if (scanf("%d", &currNum) == 1)
+			{
+				if (currNum == 0) break;
+				if (currNum > max) max = currNum;
+				if (currNum < min) min = currNum;
+				sum += currNum;
+				howMany += 1;
+			}
+		}
+		double mean = (double)sum / howMany;
+		printf("Min value: %d. Dif. between min and max value: %d. A. mean: %lf.", min, max - min, mean);
+		break;
+	case 14:
+		double e, f;
+		printf("Put the numbers:\n");
+		if (scanf("%lf %lf", &e, &f) == 2)
+		{
+			printf("Sum: %lf\n", e+f);
+			printf("Difference: %lf\n", e-f);
+			printf("Multiplication: %lf\n", e*f);
+			if (f != 0) printf("Division: %lf\n", e / f);
+			else printf("Cannot divide by 0!\n");
+		}
+		break;
+	case 15:
+		int num;
+		printf("Put number: ");
+		if (scanf("%d", &num) == 1)
+		{
+			printf("Number of digits: %d\n", (int)log10(num)+1);
+		}
+		break;
+	case 16:
+		double neg;
+		printf("Put number: ");
+		if (scanf("%lf", &neg) == 1)
+		{
+			printf("%lf", -neg);
+		}
+		break;
+	case 17:
+		int num1 = 2, num2 = 3, temp;
+		printf("%d  %d\n", num1, num2);
+		temp = num1;
+		num1 = num2;
+		num2 = temp;
+		printf("%d  %d\n", num1, num2);
+		num1 -= num2;
+		num2 += num1;
+		num1 = num2 - num1;
+		printf("%d  %d\n", num1, num2);
+		break;
+	case 18:
+		int howManyNum;
+		printf("Put how many numbers in multiplication table: ");
+		if (scanf("%d", &howManyNum) == 1)
+		{
+			for (int o = 1; o <= howManyNum; o++)
+			{
+				for (int p = 1; p <= howManyNum; p++)
+				{
+					printf(" %d ", o * p);
+				}
+				printf("\n");
+			}
+		}
+		break;
 	default:
 		printf("There is no such Task!");
 		break;

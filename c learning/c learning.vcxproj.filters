@@ -20,7 +20,13 @@
     <ClCompile Include="Set1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SetChoosing.c">
+    <ClCompile Include="TaskChoosing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Set3.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
