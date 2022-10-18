@@ -2,12 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-double multiply(double, unsigned int);
-
-double arrayProduct(unsigned int n, unsigned int A[]);
-
-double arraySum(unsigned int n, unsigned int A[]);
-
 _Bool IsLapYear(int y)
 {
 	if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) return 1;
@@ -119,7 +113,6 @@ void Lab2(void)
 		printf("Product of A1: %f\n", arrayProduct(N, A1));
 		printf("and product of A2: %f\n", arrayProduct(N, A2));
 		printf("and sum of A1: %f\n", arraySum(N, A1));
-		system("pause");
 		break;
 	}
 }
