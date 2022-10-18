@@ -4,6 +4,8 @@
 #include <math.h>
 #define N 5
 #define K 10
+#define L 5
+#define M 3
 
 void swap(int *a, int *b)
 {
@@ -112,6 +114,51 @@ void array_to_array_reversed(double arr1[], double arr2[], int n)
 	}
 }
 
+void read_to_double_array(double arr[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("\nNumber %d: ", i+1);
+		if(scanf("%lf", &arr[i])==1) continue;
+	}
+}
+
+double mean_of_array(double arr[], int n)
+{
+	double mean = 0;
+	for (int i = 0; i < n; i++)
+	{
+		mean += arr[i];
+	}
+	return mean / n;
+}
+
+double mean_of_multiple_arrays(double arr[M][N])
+{
+	double mean = 0;
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			mean += arr[i][j];
+		}
+	}
+	return mean / (N * M);
+}
+
+double max_of_multiple_arrays(double arr[M][N])
+{
+	double max = 0;
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (arr[i][j]>max) max = arr[i][j];
+		}
+	}
+	return max;
+}
+
 void Set3(int chosenTask)
 {
 	switch (chosenTask)
@@ -199,6 +246,20 @@ void Set3(int chosenTask)
 		struct minmax x9 = minumum_and_maximum(numbers, K);
 		printf("Minimum: %d\nMaximum: %d", x9.min, x9.max);
 		break;
+	case 10:
+		double arr101[M][L];
+		for (int i = 0; i < M; i++)
+		{
+			read_to_double_array(arr101[i], L);
+			printf("\nMean of array nr.%d: %lf", i, mean_of_array(arr101[i], L));
+		}
+		printf("\nMean of all %d arrays: %lf", M, mean_of_multiple_arrays(arr101));
+		printf("\nMax value of all %d arrays: %lf", M, max_of_multiple_arrays(arr101));
+		break;
+		// 1. 010 == 8, 0x10 == 16, 024 == 20, 0xae == 174
+		// 2. 100000 == 0x20 == 0x40, 11011 == 0x1b == 033, 1011100 == 0x5c == 0134
+		// 3. 1011 == 11, 0241 == 161, 0137 == 95, 077 == 63, 0xc0 == 192, 0xff == 255, 0x2d == 45
+		// 4. 169 == 0251 == 0xa9, 4096 == 010000 == 0x1000, 127 == 0177 == 0x7f, 500 == 0764 == 0x1f4
 	default:
 		printf("There is no such Task!");
 		break;
