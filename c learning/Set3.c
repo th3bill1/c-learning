@@ -6,6 +6,8 @@
 #define K 10
 #define L 5
 #define M 3
+#define O 5
+#define P 20
 
 void swap(int *a, int *b)
 {
@@ -57,20 +59,29 @@ void print_name_age(int ages[], char* names[])
 	}
 }
 
-void delete_element(char** words, int n)
+void delete_element(char words[][P], int n)
 {
-	words[n] = NULL;
+	for (int i = 0; i < P; i++)
+	{
+		words[n-1][i] = '\0';
+	}
 }
 
-void array_print(char** words, int n)
+void array_print(char words[][P], int n)
 {
-	int j = 1;
 	for (int i = 0; i < n; i++)
 	{
-		if (words[i] != NULL)
+			printf("\n%d.%s", i+1, words[i]);
+	}
+}
+
+void array_read(char words[][P], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		if (words[i] != NULL && words[i]!='\0')
 		{
-			printf("\n%d.%s", j, words[i]);
-			j++;
+			scanf("%s", words[i]);
 		}
 	}
 }
@@ -216,15 +227,17 @@ void Set3(int chosenTask)
 		print_name_age(ages,names);
 		break;
 	case 6:
-		char* words[] = {"Alan", "Frank", "Ann", "John", "Andrew"};
-		int x6 = 5, y6;
-		array_print(words, x6);
+		char words[O][P];
+		int  x6;
+		printf("Put 5 words, at most 20 characters: \n");
+		array_read(words, O);
+		array_print(words, O);
 		printf("\nPut which to delete:");
-		if (scanf("%d", &y6) == 1)
+		if (scanf("%d", &x6) == 1)
 		{
-			delete_element(words, y6);
+			delete_element(words, x6);
 		}
-		array_print(words, x6); // Don't know how to make a reading function :(
+		array_print(words, O);
 		break;
 	case 7:
 		double arr81[N] = { 1.4, 6.7, 12.5, 14.2, 5.6 };

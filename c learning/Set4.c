@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include <stdbool.h>
 
 int mystrlen(const char* src)
 {
@@ -46,6 +47,62 @@ int mystrncmp(char* dest, const char* src, int n) //it's less messy with int tha
 	return 0;
 }
 
+char str53[40];
+
+char* mystrcat(char* dest, const char* src)
+{
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		str53[i] = src[i];
+	}
+	for (int i = mystrlen(src); i < (mystrlen(src) + mystrlen(dest)); i++)
+	{
+		str53[i] = dest[i - mystrlen(src)];
+	}
+	return str53;
+}
+
+const char* mystrchr(const char* src, char c)
+{
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		if (src[i] == c) return &src[i];
+	}
+	return NULL;
+}
+
+bool ispalindrome(char* src)
+{
+	for (int i = 0; i < ((mystrlen(src)/2)+1); i++)
+	{
+		if (src[i] != src[mystrlen(src) - i - 1]) return false;
+	}
+	return true;
+}
+
+void strrmidx(char* src, int n) 
+{
+	for (int i = n - 1; i < mystrlen(src) + 1; i++)
+	{
+		src[i] = src[i + 1];
+	}
+}
+
+void strrmchr(char* src, char ch)
+{
+	int j = 0;
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		if (src[i] == ch) 
+		{
+			j = i;
+			break;
+		}
+	}
+	strrmidx(src, j+1);
+}
+
+
 void Set4(int chosenTask)
 {
 	switch (chosenTask)
@@ -79,6 +136,53 @@ void Set4(int chosenTask)
 			if (mystrncmp(str41, str42, x4) == 0) printf("First %d elements of this 2 strings are equal", x4);
 			else printf("First %d elements of this 2 strings are not equal", x4);
 		}
+		break;
+	case 5:
+		char str51[] = "I'm blue da ";
+		char str52[] = "ba dee da ba da";
+		printf("\nString 1: %s", str51);
+		printf("\nString 2: %s", str52);
+		printf("\nString 1+2: %s", mystrcat(str52, str51));
+		break;
+	case 6:
+		char x6;
+		char str61[] = "I'm blue da ba dee";
+		printf("Put character you want to search for: ");
+		if (scanf(" %c", &x6) == 1)
+		{
+			printf("First occurence of character %c is: %p", *mystrchr(str61, x6), (void *)mystrchr(str61, x6));
+		}
+		break;
+	case 7:
+		char str71[] = "I'm blue eulb m'I";
+		char str72[] = "I'm blue de eulb m'I";
+		if (ispalindrome(str71) == true) printf("\n%s is a palindrome", &str71);
+		else printf("\n%s is a not palindrome", &str71);
+		if (ispalindrome(str72) == true) printf("\n%s is a palindrome", &str72);
+		else printf("\n%s is not a palindrome", &str72);
+		break;
+	case 8:
+		int x8;
+		char str81[] = "I'm blue da ba dee";
+		printf("%s\nPut which to remove:", &str81);
+		if (scanf("%d", &x8) == 1)
+		{
+			strrmidx(str81, x8);
+			printf("\n%s", str81);
+		}
+		break;
+	case 9:
+		char x9;
+		char str91[] = "I'm blue da ba dee";
+		printf("\n%s", str91);
+		printf("\nPut which character you want to remove: ");
+		if (scanf(" %c", &x9) == 1)
+		{
+			strrmchr(str91, x9);
+			printf("\n%s", str91);
+		}
+		break;
+	case 10:
 		break;
 	default:
 		printf("There is no such Task!");
