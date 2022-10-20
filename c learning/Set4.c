@@ -102,6 +102,50 @@ void strrmchr(char* src, char ch)
 	strrmidx(src, j+1);
 }
 
+void strrmchrevery(char* src, char ch)
+{
+	int j = 0, i = 0;
+	while( i < mystrlen(src))
+	{
+		if (src[i] == ch)
+		{
+			j = i;
+			strrmidx(src, j + 1);
+			i--;
+		}
+		i++;
+	}
+}
+
+void strrmchrupper(char* src)
+{
+	int j = 0, i = 0;
+	while (i < mystrlen(src))
+	{
+		if ((int)src[i]>64 && (int)src[i] < 91)
+		{
+			j = i;
+			strrmidx(src, j + 1);
+			i--;
+		}
+		i++;
+	}
+}
+
+void srtrmsub(char* src, int start, int length)
+{
+	int j = start - 1;
+	for (int i = 0; i < length; i++)
+	{
+		strrmidx(src, j);
+	}
+}
+
+void strrmstr(char* src, const char* toremove)
+{
+	int length = mystrlen(toremove);
+
+}
 
 void Set4(int chosenTask)
 {
@@ -183,6 +227,34 @@ void Set4(int chosenTask)
 		}
 		break;
 	case 10:
+		char x10;
+		char str101[] = "I'm blue da ba dee";
+		printf("\n%s", str101);
+		printf("\nPut which character you want to remove: ");
+		if (scanf(" %c", &x10) == 1)
+		{
+			strrmchrevery(str101, x10);
+			printf("\n%s", str101);
+		}
+		break;
+	case 11:
+		char str111[] = "I'm BlUe dA ba deE";
+		printf("\nBefore removing uppercase letters: %s", str111);
+		strrmchrupper(str111);
+		printf("\nAfter removing uppercase letters:%s", str111);
+		break;
+	case 12:
+		int x12, y12;
+		char str121[] = "I'm blue da ba dee";
+		printf("\n%s", str121);
+		printf("\nPut first character you want to remove and length: ");
+		if (scanf(" %d %d", &x12, &y12) == 2)
+		{
+			srtrmsub(str121, x12, y12);
+			printf("\n%s", str121);
+		}
+		break;
+	case 13:
 		break;
 	default:
 		printf("There is no such Task!");
