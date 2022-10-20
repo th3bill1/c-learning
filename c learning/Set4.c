@@ -3,6 +3,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <stdbool.h>
+#include <float.h>
 
 int mystrlen(const char* src)
 {
@@ -141,10 +142,167 @@ void srtrmsub(char* src, int start, int length)
 	}
 }
 
-void strrmstr(char* src, const char* toremove)
+void strrmstr(char* src, char* toremove)
 {
-	int length = mystrlen(toremove);
+	int k = 0;
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		if (src[i] == toremove[0])
+		{
+			for (int j = 0; j < mystrlen(toremove); j++)
+			{
+				if (src[i + j] != toremove[j]) break;
+				k=j;
+			}
+			if (k == mystrlen(toremove)-1) srtrmsub(src, i+2, mystrlen(toremove));
+			k = 0;
+		}
+	}
+}
 
+int strrplcch(char* src, char toreplace, char replacewith)
+{
+	int k = 0;
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		if (src[i] == toreplace)
+		{
+			src[i] = replacewith;
+			k++;
+		}
+
+	}
+	return k;
+}
+
+void strlower_to_upper(char* src)
+{
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		if (src[i] > 96 && src[i] < 123) src[i] -= 32;
+	}
+}
+
+void strrplcsub(char* src, int start, int length, const char* replacement)
+{
+	for (int i = 0; i < length && i<mystrlen(replacement);i++)
+	{
+		src[start + i-1] = replacement[i];
+	}
+}
+
+int strrplcstr(char* src, const char* toreplace, const char* replacewith)
+{
+	int k = 0, l = 0;
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		if (src[i] == toreplace[0])
+		{
+			for (int j = 0; j < mystrlen(toreplace); j++)
+			{
+				if (src[i + j] != toreplace[j]) break;
+				k = j;
+			}
+			if (k == mystrlen(toreplace) - 1)
+			{
+				strrplcsub(src, i+1, k, replacewith);
+				if (mystrlen(replacewith) < mystrlen(toreplace))
+				{
+					srtrmsub(src, i + 2 + k, mystrlen(toreplace) - mystrlen(replacewith));
+					printf("\n1");
+				}
+				l++;
+			}
+			k = 0;
+		}
+	}
+	return l;
+}
+
+void move_string(char* src, int start, int length)
+{
+	char str[200];
+	for (int i = 0; i < start; i++)
+	{
+		str[i] = src[i];
+	}
+	for (int j = start; j < start + length; j++)
+	{
+		str[j] = ' ';
+	}
+	for (int k = start + length; k < mystrlen(src); k++)
+	{
+		str[k] = src[k - length];
+	}
+	for (int l = 0; l < mystrlen(src); l++)
+	{
+		src[l] = str[l];
+	}
+}
+
+void strrplcstr_with_moving(char* src, const char* toreplace, const char* replacewith)
+{
+	int k = 0;
+	for (int i = 0; i < mystrlen(src); i++)
+	{
+		if (src[i] == toreplace[0])
+		{
+			for (int j = 0; j < mystrlen(toreplace); j++)
+			{
+				if (src[i + j] != toreplace[j]) break;
+				k = j;
+			}
+			if (k == mystrlen(toreplace) - 1)
+			{
+				move_string(src, i + 1, mystrlen(replacewith)-mystrlen(toreplace));
+				strrplcsub(src, i + 1, k+mystrlen(replacewith), replacewith);
+			}
+			k = 0;
+		}
+	}
+}
+
+void numbers_to_words(char* src)
+{
+	strrplcstr_with_moving(src, " 1 ", " one ");
+	strrplcstr_with_moving(src, " 2 ", " two ");
+	strrplcstr_with_moving(src, " 3 ", " three ");
+	strrplcstr_with_moving(src, " 4 ", " four ");
+	strrplcstr_with_moving(src, " 5 ", " five ");
+	strrplcstr_with_moving(src, " 6 ", " six ");
+	strrplcstr_with_moving(src, " 7 ", " seven ");
+	strrplcstr_with_moving(src, " 8 ", " eight ");
+	strrplcstr_with_moving(src, " 9 ", " nine ");
+	strrplcstr_with_moving(src, " 10 ", " ten ");
+	strrplcstr_with_moving(src, " 11 ", " eleven ");
+	strrplcstr_with_moving(src, " 12 ", " twelve ");
+}
+
+int find_pos_min(double y[], int startpos, int length)
+{
+	int k = 0;
+	double min = DBL_MAX;
+	for (int i = startpos; i < length; i++)
+	{
+		if (y[i] < min)
+		{
+			min = y[i];
+			k = i;
+		}
+	}
+	return k;
+}
+
+void selection_sort(double x[], int length)
+{
+	double temp;
+	for (int i = 0; i < length; i++)
+	{
+		int k = find_pos_min(x, i, length);
+		temp = x[i];
+		x[i] = x[k];
+		x[k] = temp;
+	}
 }
 
 void Set4(int chosenTask)
@@ -255,6 +413,78 @@ void Set4(int chosenTask)
 		}
 		break;
 	case 13:
+		char str131[] = "I'm blue da ba dee blue da ba blue";
+		char str132[20];
+		printf("\n%s", str131);
+		printf("\nPut string you want to remove: ");
+		if (scanf(" %s", &str132) == 1)
+		{
+			strrmstr(str131, str132);
+			printf("\n%s", str131);
+		}
+		break;
+	case 14:
+		char str141[] = "I'm blue da ba dee";
+		char x14, y14;
+		printf("\n%s", str141);
+		printf("\nPut character you want to replace and character you want put instead: ");
+		if (scanf(" %c %c", &x14, &y14) == 2)
+		{
+			int n14 = strrplcch(str141, x14, y14);
+			printf("\nString: %s\n%d character(s) replaced", str141, n14);
+		}
+		break;
+	case 15:
+		char str151[] = "I'm blue da ba dee";
+		printf("\nBefore change: %s", str151);
+		strlower_to_upper(str151);
+		printf("\nAfter change: %s", str151);
+		break;
+	case 16:
+		int x16, y16;
+		char str161[] = "I'm blue da ba dee";
+		char str162[30];
+		printf("\n%s", str161);
+		printf("\nPut a substring, starting position and length: ");
+		if (scanf(" %s %d %d", &str162,&x16, &y16) == 3)
+		{
+			strrplcsub(str161, x16, y16, str162);
+			printf("String after replacement: %s", str161);
+		}
+		break;
+	case 17:
+		char str171[] = "I'm blue da ba dee blue da ba blue";
+		char str172[20], str173[20];
+		printf("\nBefore changes: %s", str171);
+		printf("\nPut a substring you want to replace and its replacement: ");
+		if (scanf(" %s %s", &str172, &str173) == 2)
+		{
+			int n17 = strrplcstr(str171, str172, str173);
+			printf("String after %d replacements: %s", n17, str171);
+		}
+		break;
+	case 18:
+		char str181[200] = "44 3 143 12 5 8 11 7 156                          "; //need to figure it out how to skip this part
+		printf("\nBefore changes: %s", str181);
+		numbers_to_words(str181);
+		printf("\nAfter replacements: %s", str181);
+		break;
+	case 19:
+		int length = 6;
+		double x19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
+		double y19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
+		double z19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
+		printf("\nBefore sorting: ");
+		for (int i = 0; i < length; i++)
+		{
+			printf("%lf ", x19[i]);
+		}
+		selection_sort(x19, length);
+		printf("\nAfter sorting: ");
+		for (int i = 0; i < length; i++)
+		{
+			printf("%lf ", x19[i]);
+		}
 		break;
 	default:
 		printf("There is no such Task!");
