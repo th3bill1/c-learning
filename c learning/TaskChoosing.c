@@ -7,6 +7,7 @@ void Set1(int);
 void Set2(int);
 void Set3(int);
 void Set4(int);
+void Set5(int);
 void Lab1(void);
 void Lab2(void);
 
@@ -32,6 +33,11 @@ void TaskChoosing(int chosenSet, int chosenTask)
 	case 4: 
 	{
 		Set4(chosenTask);
+		break;
+	}
+	case 5: 
+	{
+		Set5(chosenTask);
 		break;
 	}
 	case 11:

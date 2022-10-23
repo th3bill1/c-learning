@@ -150,6 +150,7 @@
     <ClCompile Include="Set2.c" />
     <ClCompile Include="Set3.c" />
     <ClCompile Include="Set4.c" />
+    <ClCompile Include="Set5.c" />
     <ClCompile Include="TaskChoosing.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -472,8 +472,8 @@ void Set4(int chosenTask)
 	case 19:
 		int length = 6;
 		double x19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
-		double y19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
-		double z19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
+		//double y19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
+		//double z19[] = { 12, 1.5, 21.5, 23.7, 17.345, 15.5 };
 		printf("\nBefore sorting: ");
 		for (int i = 0; i < length; i++)
 		{
