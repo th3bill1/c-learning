@@ -44,5 +44,8 @@
     <ClCompile Include="Set6.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Set7.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
