@@ -47,5 +47,11 @@
     <ClCompile Include="Set7.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lab4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab5-graded.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
