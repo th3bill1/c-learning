@@ -15,11 +15,19 @@ int main(void)
 		if (scanf("%d", &chosenSet) == 1)
 		{
 			if (chosenSet == 0) break;
-			if (chosenSet > 10) TaskChoosing(chosenSet, 0);
+			if (chosenSet > 10)
+			{
+				while ((getchar()) != '\n');
+				TaskChoosing(chosenSet, 0);
+			}
 			else if (chosenSet < 11)
 			{
 				printf("Put the number of Task you want to choose :");
-				if (scanf("%d", &chosenTask) == 1) TaskChoosing(chosenSet, chosenTask);
+				if (scanf("%d", &chosenTask) == 1)
+				{
+					while ((getchar()) != '\n');
+					TaskChoosing(chosenSet, chosenTask);
+				}
 				else printf("Wrong input.");
 			}
 		}
