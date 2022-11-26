@@ -16,8 +16,8 @@ int check_subset(const int* set, int set_size, const int* query, int query_size)
 void find_min_max_k(const int* arr, int size, int k, int subarr_min_max[][2], int* number_subarr_found);
 void print_subarrays2(const int* arr, int k, const int subarr_min_max[][2], int subarr_size);
 
-void version_a();
-void version_b();
+void version_a5();
+void version_b5();
 
 int Lab5()
 {
@@ -28,10 +28,10 @@ int Lab5()
         switch (choice)
         {
         case 1:
-            version_a();
+            version_a5();
             break;
         case 2:
-            version_b();
+            version_b5();
             break;
         default:
             break;
@@ -40,7 +40,7 @@ int Lab5()
     return 0;
 }
 /**************************** VERSION A ****************************/
-void version_a()
+void version_a5()
 {
     int arr1[] = { 7, 9, 5, 11, 7, 4, 12, 6, 2, 11 };
     int size = sizeof(arr1) / sizeof(arr1[0]);
@@ -101,7 +101,7 @@ void version_a()
     print_subarrays1(arr4, subarr_idx, number_subarr_found);
 }
 /**************************** VERSION B ****************************/
-void version_b()
+void version_b5()
 {
     int arr1[] = { 17, 42, 42, 7, 24, 24, 24, 17, 54, 17 };
     int size = sizeof(arr1) / sizeof(arr1[0]);

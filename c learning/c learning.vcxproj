@@ -150,6 +150,7 @@
     <ClCompile Include="Lab5-graded.c" />
     <ClCompile Include="Lab6.c" />
     <ClCompile Include="Lab7-graded.c" />
+    <ClCompile Include="Lab8.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Set1.c" />
     <ClCompile Include="Set2.c" />
