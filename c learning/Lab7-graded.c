@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define N 26
 
 void version_a7();
 void version_b7();
@@ -12,6 +13,9 @@ void print_letter_stats(int[]);
 
 int in_set(const char,const char[]);
 void replace_chars(char[], const char[], const char[]);
+void space_out(char[], int);
+int count_characters(char[], int[][2]);
+void print_char_stats(int[][2], int);
 
 void Lab7(void)
 {
@@ -94,17 +98,16 @@ void version_b7(void)
 	puts(message);
 
 	puts("******** Part 4 ********");
-	/*
+	
 	space_out(message, 7);
 	printf("[%s]\n", message);
-	*/
 
 	puts("******** Part 5 ********");
-	/*
-	int counts[26][2];
-	int n = count_chars(message, counts);
+	
+	int counts[N][2];
+	int n = count_characters(message, counts);
 	print_char_stats(counts, n);
-	*/
+	
 }
 
 int strlen(char* x)
@@ -254,7 +257,68 @@ void replace_chars(char* text, const char* alph1, const char* alph2)
 	}
 }
 
-//void space_out(char* text, int num)
-//{
-//	while()
-//}
+void space_out(char* text, int num)
+{
+	int len = strlen(text);
+	int n = len / num;
+	*(text + len + n-2) = '\0';
+	if (n * num != len)
+	{
+		for (int i = 0; i < len - (n * num); i++)
+		{
+			*(text + len + n - i - 1) = *(text + len - i);
+		}
+	}
+	int k = 0;
+	for (int i = len + n - 2; i >= 0; i--)
+	{
+		if (i != len + n - 2 && i!=0 && ((i+1) % (num+1)) == 0)
+		{
+			*(text + i) = ' ';
+			k++;
+		}
+		else if (i>(i-n+k+1))
+		{
+			*(text + i) = *(text + i - n + k+1);
+		}
+	}
+	
+}
+
+int count_characters(char* text, int unique_characters[][2])
+{
+	int i = 0, u_c = 0, does_contain = 0;
+	for (int a = 0; a < N; a++)
+	{
+		unique_characters[a][1] = 0;
+	}
+	while (*(text + i) != '\0')
+	{
+		does_contain = 0;
+		for (int j = 0; j < u_c; j++)
+		{
+			if (*(text + i) == unique_characters[j][0])
+			{
+				unique_characters[j][1]++;
+				does_contain = 1;
+			}
+		}
+		if (!does_contain)
+		{
+			unique_characters[u_c][0] = (int)*(text + i);
+			unique_characters[u_c][1]++;
+			u_c++;
+		}
+		i++;
+	}
+	return u_c;
+}
+
+void print_char_stats(int unique_characters[][2], int u_c)
+{
+	printf("Char.\tCount");
+	for (int i = 0; i < u_c; i++)
+	{
+		printf("\n'%c'\t%d", (char)unique_characters[i][0], unique_characters[i][1]);
+	}
+}
