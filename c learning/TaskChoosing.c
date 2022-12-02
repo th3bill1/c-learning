@@ -18,6 +18,7 @@ void Lab5(void);
 void Lab6(void);
 void Lab7(void);
 void Lab8(void);
+void Lab9(void);
 
 void TaskChoosing(int chosenSet, int chosenTask)
 {
@@ -81,6 +82,9 @@ void TaskChoosing(int chosenSet, int chosenTask)
 		break;
 	case 18:
 		Lab8();
+		break;
+	case 19:
+		Lab9();
 		break;
 	default: 
 		printf("There is no such Set!");
