@@ -43,15 +43,15 @@ typedef struct Animal
 	dangerousness danger;
 }Creature;
 
-//void printAnimal();
+void printAnimal(Creature*);
 
-//int readAnimal();
+int readAnimal(Creature*);
 
-//mixAnimals();
+Creature mixAnimals(Creature*, Creature*);
 
-//int compareAnimals();
+int compareAnimals(Creature*,Creature*);
 
-//void sortAnimals();
+void sortAnimals(Creature[], int);
 
 void version_a9();
 void version_b9();
@@ -76,8 +76,8 @@ void Lab9(void)
 	}
 }
 
-void version_a9() {
-
+void version_a9() 
+{
 	struct Currency  a, b;
 	if (!readCurrency(&a))
 	{
@@ -151,27 +151,22 @@ void version_a9() {
 
 void version_b9()
 {
-	//Part 1
-	/*
 	struct Animal  a, b;
 	if (!readAnimal(&a))
 	{
 		puts("Invalid format!");
-		return 0;
+		return;
 	}
 	printAnimal(&a);
 	putchar('\n');
 	if (!readAnimal(&b))
 	{
 		puts("Invalid format!");
-		return 0;
+		return;
 	}
 	printAnimal(&b);
 	putchar('\n');
-	*/
-
-	//Part 2
-	/*
+	
 	{
 		puts("\nTest animals mixing");
 		struct Animal test_a = { "Bat", 5, 0 };
@@ -184,19 +179,14 @@ void version_b9()
 		printAnimal(&test_c);
 		putchar('\n');
 	}
-	*/
-
-	//Part 3
-	/*
+	
 	puts("\nTest comparing animals:");
 	printAnimal(&b);
 	puts("\nand");
 	printAnimal(&a);
 	printf("\nResult (a&b)%d (b&a)%d (b&b)%d\n", compareAnimals(&a, &b), compareAnimals(&b, &a), compareAnimals(&b, &b));
-	*/
 
-	//Part 4
-	/*struct Animal list[] = {
+	struct Animal list[] = {
 		{ "Lion", 1, 2 },
 		{ "Panda", 46, 0 },
 		{ "Cat", 4, 2 },
@@ -212,7 +202,6 @@ void version_b9()
 		{ "Cat",24,0 },
 		{ "Dog", 11, 2 }
 	};
-
 
 	int size = sizeof(list) / sizeof(struct Animal);
 	list[0] = mixAnimals(&list[0], &list[1]);
@@ -230,7 +219,6 @@ void version_b9()
 		printAnimal(&list[i]);
 		putchar('\n');
 	}
-	*/
 }
 
 int readCurrency(Money* currency)
@@ -293,5 +281,72 @@ void sortCurrency(Money list[], int n)
 			k--;
 		}
 		copyCurrency(&list[k + 1], &a);
+	}
+}
+
+void printAnimal(Creature* c)
+{
+	printf("%s %f ", c->name, c->weight);
+	if (c->danger == WILD) printf("wild");
+	else if (c->danger == PET) printf("pet");
+	else printf("mix");
+}
+
+int readAnimal(Creature* c)
+{
+	printf("Give: name weight wild/pet (0 or 2)\n");
+	if (scanf(" %s %f %d", &c->name, &c->weight, &c->danger) == 3) return 1;
+	else return 0;
+}
+
+Creature mixAnimals(Creature* c1, Creature* c2)
+{
+	Creature cmix = {"",0,MIX};
+	if (!strcmp(c1->name, c2->name))
+	{
+		strncpy(cmix.name, c1->name, NAMELEN);
+		cmix.weight = (c1->weight + c2->weight) / 2;
+	}
+	else
+	{
+		strcat(cmix.name, c1->name);
+		strcat(cmix.name, c2->name);
+		if (c1->weight > c2->weight) cmix.weight = c1->weight;
+		else cmix.weight = c2->weight;
+	}
+	cmix.danger = MIX;
+	return cmix;
+}
+
+int compareAnimals(Creature* c1, Creature* c2)
+{
+	if (c1->danger > c2->danger) return 1;
+	else if (c2->danger > c1->danger) return -1;
+	if (strcmp(c1->name, c2->name) != 0) return strcmp(c1->name, c2->name);
+	if (c1->weight > c2->weight) return 1;
+	else if (c2->weight > c1->weight) return -1;
+	return 0;
+}
+
+void copyAnimal(Creature* dest, Creature* src)
+{
+	strcpy(dest->name, src->name);
+	dest->weight = src->weight;
+	dest->danger = src->danger;
+}
+void sortAnimals(Creature list[], int size)
+{
+	int k;
+	Creature c;
+	for (int i = 1; i < size; i++)
+	{
+		copyAnimal(&c, &list[i]);
+		k = i - 1;
+		while (compareAnimals(&c, &list[k])==-1&&k>=0)
+		{
+			copyAnimal(&list[k + 1], &list[k]);
+			k--;
+		}
+		copyAnimal(&list[k + 1], &c);
 	}
 }
