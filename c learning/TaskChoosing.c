@@ -19,6 +19,7 @@ void Lab6(void);
 void Lab7(void);
 void Lab8(void);
 void Lab9(void);
+void Lab10(void);
 
 void TaskChoosing(int chosenSet, int chosenTask)
 {
@@ -59,32 +60,34 @@ void TaskChoosing(int chosenSet, int chosenTask)
 		Set7(chosenTask);
 		break;
 	}
-	case 11:
+	case 101:
 		Lab1();
 		break;
-	case 12:
+	case 102:
 		Lab2();
 		break;
-	case 13:
+	case 103:
 		Lab3();
 		break;
-	case 14:
+	case 104:
 		Lab4();
 		break;
-	case 15:
+	case 105:
 		Lab5();
 		break;
-	case 16:
+	case 106:
 		Lab6();
 		break;
-	case 17:
+	case 107:
 		Lab7();
 		break;
-	case 18:
+	case 108:
 		Lab8();
 		break;
-	case 19:
+	case 109:
 		Lab9();
+	case 110:
+		Lab10();
 		break;
 	default: 
 		printf("There is no such Set!");

@@ -11,7 +11,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("\nPut the number of Set you want to choose (if you want to leave put 0), for labs put 1#, where # is the number of lab: ");
+		printf("\nPut the number of Set you want to choose (if you want to leave put 0), for labs put 1##, where ## is the number of lab: ");
 		if (scanf("%d", &chosenSet) == 1)
 		{
 			if (chosenSet == 0) break;

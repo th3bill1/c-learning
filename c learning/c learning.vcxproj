@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Lab1.c" />
+    <ClCompile Include="Lab10.c" />
     <ClCompile Include="Lab2.c" />
     <ClCompile Include="Lab3-graded.c" />
     <ClCompile Include="Lab4.c" />
