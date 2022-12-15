@@ -27,21 +27,21 @@ void Lab10()
 	initialize_poly(&p1);
 	initialize_poly(&p2);
 	initialize_poly(&p3);
-	printf("p1: "); print_poly(&p1);
+	printf("p1: "); print_poly(&p1);printf("\n");
 
 	printf("\n************** Task 2 (2 points) **************\n");
 	int coeff[] = { 1, -2, 3, -4, 5, -6 };
 	fill_poly(&p1, 5, coeff);
 	fill_poly_rand(&p2, 2);
-	printf("\np1: "); print_poly(&p1);
-	printf("\np2: "); print_poly(&p2);
+	printf("p1: "); print_poly(&p1);
+	printf("\np2: "); print_poly(&p2);printf("\n");
 
 	printf("\n************** Task 3 (1 points) **************\n");
 	extend_poly(&p2, 4);
-	printf("p2: "); print_poly(&p2);
+	printf("p2: "); print_poly(&p2);printf("\n");
 
 	printf("\n************** Task 4 (2 points) **************\n");
-	printf("p1(1): "); printf("%d\n", evaluate_poly(&p1, 1));
+	printf("p1(1): "); printf("%d\n", evaluate_poly(&p1, 1));printf("\n");
 
 	printf("\n************** Task 5 (2 points) **************\n");
 	sum_polly(&p1, &p2, &p3);
@@ -122,9 +122,10 @@ void extend_poly(Poly* p, int new_deg)
 	}
 	else
 	{
+		int old_deg = p->deg;
 		p->deg = new_deg;
 		p->coeff = (int*)realloc(p->coeff, (new_deg + 1) * sizeof(int));
-		for (int i = 0; i <= new_deg; i++)
+		for (int i = old_deg+1; i <= new_deg; i++)
 		{
 			p->coeff[i] = 0;
 		}
