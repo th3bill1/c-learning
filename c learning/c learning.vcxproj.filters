@@ -68,5 +68,8 @@
     <ClCompile Include="Lab10.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lab12.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
