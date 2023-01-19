@@ -1,0 +1,5 @@
+Size of array: 4
+Benoit Blanc 1
+Miles Bron 2
+Cassandra Brand 3
+Claire Debella 5

@@ -164,7 +164,12 @@
     <ClCompile Include="Set5.c" />
     <ClCompile Include="Set6.c" />
     <ClCompile Include="Set7.c" />
+    <ClCompile Include="Set8.c" />
     <ClCompile Include="TaskChoosing.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="set8_task1.txt" />
+    <Text Include="set8_task3_students.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

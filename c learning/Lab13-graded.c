@@ -88,7 +88,6 @@ void version_a13()
 	PrintList(&mylist);
 	DeleteList(&mylist);
 	
-	/*
 	puts("\n------ PART 3 ------");
 	char str[80];
 	strcpy(str, "abc");
@@ -97,10 +96,7 @@ void version_a13()
 	printf("Total length of labels = %d\n", LabelsLength(&mylist));
 	DeleteList(&mylist);
 	PrintList(&mylist);
-	*/
 
-	//3p
-	/*
 	puts("\n------ PART 4 ------");
 	{
 		List list1 = { NULL,NULL };
@@ -126,7 +122,7 @@ void version_a13()
 		DeleteList(&list2);
 		DeleteList(&list3);
 	}
-	*/
+
 	puts("\nBye!");
 }
 
@@ -148,7 +144,7 @@ ListElement* CreateElement(const char* str)
 	ListElement* new_element = (ListElement*)malloc(sizeof(ListElement));
 	new_element->label = SetLabel(str);
 	new_element->next = NULL;
-	new_element->next = NULL;
+	new_element->prev = NULL;
 	if (new_element)
 	{
 		return new_element;
@@ -181,20 +177,18 @@ void PrintList(const List* list)
 	}
 }
 
-void DeleteList(List* list)
+void DeleteList(List* list) 
 {
-	if (list->head->next)
-	{
-		ListElement* temp = list->head->next;
-		while (temp)
-		{
-			free(temp->prev);
-			temp = temp->next;
-		}
-	}
-	free(list->tail);
+	//ListElement* current = list->head;
 	list->head = NULL;
 	list->tail = NULL;
+	/*while (current != NULL)
+	{
+		ListElement* temp = current;
+		current = current->next;
+		free(temp);
+	}*/
+	
 }
 
 int LabelsLength(List* list)
@@ -207,4 +201,55 @@ int LabelsLength(List* list)
 		temp = temp->next;
 	}
 	return sum;
+}
+
+void BuildLabelsList(List* list, const char* letters)
+{
+	char str[4];
+	str[3] = '\0';
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			for (int k = 0; k < 3; k++)
+			{
+				str[0] = letters[i];
+				str[1] = letters[j];
+				str[2] = letters[k];
+				ListElement* a = CreateElement(str);
+				InsertFirst(a, list);
+			}
+		}
+	}
+}
+
+int InList(const List* list, Label label)
+{
+	ListElement* temp = list->head;
+	while (temp)
+	{
+		if (!strcmp(temp->label.string, label.string))
+		{
+			return 1;
+		}
+		temp = temp->next;
+	}
+	return 0;
+}
+
+List CommonLabels(const List* a, const List* b)
+{
+	List new_list = {NULL,NULL};
+	ListElement* first = b->tail;
+	while (first)
+	{
+		if ((InList(a, first->label)) && (!InList(&new_list, first->label)))
+		{
+			InsertFirst(first, &new_list);
+		}
+		first = first->prev;
+	}
+	new_list.head->prev = NULL;
+	new_list.tail->next = NULL;
+	return new_list;
 }
