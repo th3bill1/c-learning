@@ -71,5 +71,11 @@
     <ClCompile Include="Lab12.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lab11-graded.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lab13-graded.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
