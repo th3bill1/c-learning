@@ -165,6 +165,7 @@
     <ClCompile Include="Set6.c" />
     <ClCompile Include="Set7.c" />
     <ClCompile Include="Set8.c" />
+    <ClCompile Include="sorting_algorithms.c" />
     <ClCompile Include="TaskChoosing.c" />
   </ItemGroup>
   <ItemGroup>

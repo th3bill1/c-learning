@@ -19,7 +19,7 @@ void read_from_file(char*);
 void write_students_to_file(char*, Student*, int);
 Student* read_students_from_file(char*);
 int how_many_elements(char*);
-void characters_to_underscore(char*);
+//void characters_to_underscore(char*);
 
 void Set8(int chosenTask)
 {
@@ -48,7 +48,7 @@ void Set8(int chosenTask)
 			}
 			break;
 		case 6:
-			characters_to_underscore("set8_task1.txt");
+			//characters_to_underscore("set8_task1.txt");
 			break;
 	}
 }
@@ -122,18 +122,18 @@ int how_many_elements(char* str)
 	return size;
 }
 
-void characters_to_underscore(char* str)
-{
-	FILE* f = fopen(str, "r+");
-	int c, n=0;
-	while (((c = fgetc(f)) != EOF)&& n<40)
-	{
-		if (c==97)
-		{
-			fseek(f, -1, SEEK_CUR);
-			fputc('_', f);
-		}
-		n++;
-	}
-	fclose(f);
-}
+//void characters_to_underscore(char* str)
+//{
+//	FILE* f = fopen(str, "r+");
+//	int c, n=0;
+//	while (((c = fgetc(f)) != EOF)&& n<40)
+//	{
+//		if (c==97)
+//		{
+//			fseek(f, -1, SEEK_CUR);
+//			fputc('_', f);
+//		}
+//		n++;
+//	}
+//	fclose(f);
+//}

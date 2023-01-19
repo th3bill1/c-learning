@@ -80,6 +80,9 @@
     <ClCompile Include="Set8.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sorting_algorithms.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="set8_task3_students.txt">
