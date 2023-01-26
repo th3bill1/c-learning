@@ -24,6 +24,7 @@ void Lab10(void);
 void Lab11(void);
 void Lab12(void);
 void Lab13(void);
+int Lab14(void);
 void sortalg(void);
 
 void TaskChoosing(int chosenSet, int chosenTask)
@@ -108,6 +109,9 @@ void TaskChoosing(int chosenSet, int chosenTask)
 		break;
 	case 113:
 		Lab13();
+		break;
+	case 114:
+		Lab14();
 		break;
 	case 999:
 		sortalg();

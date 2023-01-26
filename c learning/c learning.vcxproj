@@ -148,6 +148,7 @@
     <ClCompile Include="Lab11-graded.c" />
     <ClCompile Include="Lab12.c" />
     <ClCompile Include="Lab13-graded.c" />
+    <ClCompile Include="Lab14.c" />
     <ClCompile Include="Lab2.c" />
     <ClCompile Include="Lab3-graded.c" />
     <ClCompile Include="Lab4.c" />
@@ -169,6 +170,7 @@
     <ClCompile Include="TaskChoosing.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="movies.txt" />
     <Text Include="set8_task1.txt" />
     <Text Include="set8_task3_students.txt" />
   </ItemGroup>

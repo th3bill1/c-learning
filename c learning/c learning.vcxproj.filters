@@ -83,12 +83,18 @@
     <ClCompile Include="sorting_algorithms.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lab14.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="set8_task3_students.txt">
       <Filter>Source Files</Filter>
     </Text>
     <Text Include="set8_task1.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="movies.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
