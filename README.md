@@ -1,3 +1,3 @@
 # c learning
 
-# Class passed, project closed
+### Class passed, project closed
